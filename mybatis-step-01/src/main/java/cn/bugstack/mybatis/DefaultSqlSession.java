@@ -6,7 +6,12 @@ import java.sql.*;
 import java.util.Date;
 import java.util.*;
 
-
+/**
+ * @author 小傅哥，微信：fustack
+ * @description 默认会话实现类
+ * @github https://github.com/fuzhengwei
+ * @Copyright 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
+ */
 public class DefaultSqlSession implements SqlSession {
 
     private Connection connection;
