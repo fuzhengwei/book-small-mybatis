@@ -1,7 +1,9 @@
 package cn.bugstack.mybatis.test.dao;
 
+import cn.bugstack.mybatis.test.po.User;
+
 public interface IUserDao {
 
-    String queryUserInfoById(String uId);
+    User queryUserInfoById(Long uId);
 
 }
