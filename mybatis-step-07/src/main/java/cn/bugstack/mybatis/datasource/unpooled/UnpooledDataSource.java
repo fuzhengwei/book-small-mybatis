@@ -250,5 +250,4 @@ public class UnpooledDataSource implements DataSource {
     public void setDefaultTransactionIsolationLevel(Integer defaultTransactionIsolationLevel) {
         this.defaultTransactionIsolationLevel = defaultTransactionIsolationLevel;
     }
-
 }

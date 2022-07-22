@@ -1,6 +1,5 @@
 package cn.bugstack.mybatis.test;
 
-import cn.bugstack.mybatis.datasource.pooled.PooledDataSource;
 import cn.bugstack.mybatis.io.Resources;
 import cn.bugstack.mybatis.session.SqlSession;
 import cn.bugstack.mybatis.session.SqlSessionFactory;
@@ -8,13 +7,18 @@ import cn.bugstack.mybatis.session.SqlSessionFactoryBuilder;
 import cn.bugstack.mybatis.test.dao.IUserDao;
 import cn.bugstack.mybatis.test.po.User;
 import com.alibaba.fastjson.JSON;
+import org.dom4j.Attribute;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.xml.sax.InputSource;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.io.Reader;
+import java.util.List;
 
 /**
  * @author 小傅哥，微信：fustack
@@ -37,27 +41,8 @@ public class ApiTest {
         IUserDao userDao = sqlSession.getMapper(IUserDao.class);
 
         // 3. 测试验证
-        for (int i = 0; i < 50; i++) {
-            User user = userDao.queryUserInfoById(1L);
-            logger.info("测试结果：{}", JSON.toJSONString(user));
-        }
-    }
-
-    @Test
-    public void test_pooled() throws SQLException, InterruptedException {
-        PooledDataSource pooledDataSource = new PooledDataSource();
-        pooledDataSource.setDriver("com.mysql.jdbc.Driver");
-        pooledDataSource.setUrl("jdbc:mysql://127.0.0.1:3306/mybatis?useUnicode=true");
-        pooledDataSource.setUsername("root");
-        pooledDataSource.setPassword("123456");
-        // 持续获得链接
-        while (true){
-            Connection connection = pooledDataSource.getConnection();
-            System.out.println(connection);
-            Thread.sleep(1000);
-            // 注释掉/不注释掉测试
-            connection.close();
-        }
+        User user = userDao.queryUserInfoById(1L);
+        logger.info("测试结果：{}", JSON.toJSONString(user));
     }
 
 }

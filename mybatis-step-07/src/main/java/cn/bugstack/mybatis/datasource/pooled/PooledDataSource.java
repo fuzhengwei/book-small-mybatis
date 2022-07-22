@@ -32,7 +32,7 @@ public class PooledDataSource implements DataSource {
     protected int poolMaximumIdleConnections = 5;
     // 在被强制返回之前,池中连接被检查的时间
     protected int poolMaximumCheckoutTime = 20000;
-    // 这是给连接池一个打印日志状态机会的低层次设置,还有重新尝试获得连接, 这些情况下往往需要很长时间 为了避免连接池没有配置时静默失败)。
+    // 这是给连接池一个打印日志状态机会的低层次设置,还有重新 尝试获得连接, 这些情况下往往需要很长时间 为了避免连接池没有配置时静默失 败)。
     protected int poolTimeToWait = 20000;
     // 发送到数据的侦测查询,用来验证连接是否正常工作,并且准备 接受请求。默认是“NO PING QUERY SET” ,这会引起许多数据库驱动连接由一 个错误信息而导致失败
     protected String poolPingQuery = "NO PING QUERY SET";
