@@ -1,6 +1,7 @@
 package cn.bugstack.mybatis.executor.statement;
 
 import cn.bugstack.mybatis.executor.Executor;
+import cn.bugstack.mybatis.executor.parameter.ParameterHandler;
 import cn.bugstack.mybatis.executor.resultset.ResultSetHandler;
 import cn.bugstack.mybatis.mapping.BoundSql;
 import cn.bugstack.mybatis.mapping.MappedStatement;
@@ -26,6 +27,7 @@ public abstract class BaseStatementHandler implements StatementHandler {
 
     protected final Object parameterObject;
     protected final ResultSetHandler resultSetHandler;
+    protected final ParameterHandler parameterHandler;
 
     protected BoundSql boundSql;
 
@@ -36,6 +38,7 @@ public abstract class BaseStatementHandler implements StatementHandler {
         this.boundSql = boundSql;
 
         this.parameterObject = parameterObject;
+        this.parameterHandler = configuration.newParameterHandler(mappedStatement, parameterObject, boundSql);
         this.resultSetHandler = configuration.newResultSetHandler(executor, mappedStatement, boundSql);
     }
 

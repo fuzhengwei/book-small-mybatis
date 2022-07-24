@@ -6,6 +6,7 @@ import cn.bugstack.mybatis.datasource.pooled.PooledDataSourceFactory;
 import cn.bugstack.mybatis.datasource.unpooled.UnpooledDataSourceFactory;
 import cn.bugstack.mybatis.executor.Executor;
 import cn.bugstack.mybatis.executor.SimpleExecutor;
+import cn.bugstack.mybatis.executor.parameter.ParameterHandler;
 import cn.bugstack.mybatis.executor.resultset.DefaultResultSetHandler;
 import cn.bugstack.mybatis.executor.resultset.ResultSetHandler;
 import cn.bugstack.mybatis.executor.statement.PreparedStatementHandler;
@@ -19,6 +20,7 @@ import cn.bugstack.mybatis.reflection.factory.DefaultObjectFactory;
 import cn.bugstack.mybatis.reflection.factory.ObjectFactory;
 import cn.bugstack.mybatis.reflection.wrapper.DefaultObjectWrapperFactory;
 import cn.bugstack.mybatis.reflection.wrapper.ObjectWrapperFactory;
+import cn.bugstack.mybatis.scripting.LanguageDriver;
 import cn.bugstack.mybatis.scripting.LanguageDriverRegistry;
 import cn.bugstack.mybatis.scripting.xmltags.XMLLanguageDriver;
 import cn.bugstack.mybatis.transaction.Transaction;
@@ -155,6 +157,17 @@ public class Configuration {
 
     public LanguageDriverRegistry getLanguageRegistry() {
         return languageRegistry;
+    }
+
+    public ParameterHandler newParameterHandler(MappedStatement mappedStatement, Object parameterObject, BoundSql boundSql) {
+        // 创建参数处理器
+        ParameterHandler parameterHandler = mappedStatement.getLang().createParameterHandler(mappedStatement, parameterObject, boundSql);
+        // 插件的一些参数，也是在这里处理，暂时不添加这部分内容 interceptorChain.pluginAll(parameterHandler);
+        return parameterHandler;
+    }
+
+    public LanguageDriver getDefaultScriptingLanguageInstance() {
+        return languageRegistry.getDefaultDriver();
     }
 
 }
