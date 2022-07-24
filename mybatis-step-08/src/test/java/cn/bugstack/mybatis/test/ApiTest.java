@@ -1,6 +1,8 @@
 package cn.bugstack.mybatis.test;
 
 import cn.bugstack.mybatis.io.Resources;
+import cn.bugstack.mybatis.reflection.MetaObject;
+import cn.bugstack.mybatis.reflection.SystemMetaObject;
 import cn.bugstack.mybatis.session.SqlSession;
 import cn.bugstack.mybatis.session.SqlSessionFactory;
 import cn.bugstack.mybatis.session.SqlSessionFactoryBuilder;
@@ -18,6 +20,7 @@ import org.xml.sax.InputSource;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 
 /**

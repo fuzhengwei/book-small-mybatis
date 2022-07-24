@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 import java.sql.*;
+import java.util.Properties;
 import java.util.logging.Logger;
 
 /**
@@ -341,6 +342,21 @@ public class PooledDataSource implements DataSource {
         forceCloseAll();
     }
 
+    public String getDriver() {
+        return dataSource.getDriver();
+    }
+
+    public String getUrl() {
+        return dataSource.getUrl();
+    }
+
+    public String getUsername() {
+        return dataSource.getUsername();
+    }
+
+    public String getPassword() {
+        return dataSource.getPassword();
+    }
 
     public void setDefaultAutoCommit(boolean defaultAutoCommit) {
         dataSource.setAutoCommit(defaultAutoCommit);
