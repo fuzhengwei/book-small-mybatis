@@ -3,6 +3,7 @@ package cn.bugstack.mybatis.executor.statement;
 import cn.bugstack.mybatis.executor.Executor;
 import cn.bugstack.mybatis.mapping.BoundSql;
 import cn.bugstack.mybatis.mapping.MappedStatement;
+import cn.bugstack.mybatis.mapping.ParameterMapping;
 import cn.bugstack.mybatis.session.ResultHandler;
 
 import java.sql.Connection;
