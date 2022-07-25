@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.bugstack.mybatis.test.dao.IUserDao">
+
+    <select id="queryUserInfoById" parameterType="java.lang.Long" resultType="cn.bugstack.mybatis.test.po.User">
+        SELECT id, userId, userName, userHead
+        FROM user
+        where id = #{id}
+    </select>
+
+    <select id="queryUserInfo" parameterType="cn.bugstack.mybatis.test.po.User" resultType="cn.bugstack.mybatis.test.po.User">
+        SELECT id, userId, userName, userHead
+        FROM user
+        where id = #{id} and userId = #{userId}
+    </select>
+
+    <select id="queryUserInfoList" resultType="cn.bugstack.mybatis.test.po.User">
+        SELECT id, userId, userName, userHead
+        FROM user
+    </select>
+
+    <update id="updateUserInfo" parameterType="cn.bugstack.mybatis.test.po.User">
+        UPDATE user
+        SET userName = #{userName}
+        WHERE id = #{id}
+    </update>
+
+    <insert id="insertUserInfo" parameterType="cn.bugstack.mybatis.test.po.User">
+       INSERT INTO user
+       (userId, userName, userHead, createTime, updateTime)
+       VALUES (#{userId}, #{userName}, #{userHead}, now(), now())
+    </insert>
+
+    <delete id="deleteUserInfoByUserId" parameterType="java.lang.String">
+        DELETE FROM user WHERE userId = #{userId}
+    </delete>
+
+</mapper>
