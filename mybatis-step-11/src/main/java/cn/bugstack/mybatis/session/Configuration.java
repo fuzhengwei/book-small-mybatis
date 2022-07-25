@@ -10,7 +10,6 @@ import cn.bugstack.mybatis.executor.parameter.ParameterHandler;
 import cn.bugstack.mybatis.executor.resultset.DefaultResultSetHandler;
 import cn.bugstack.mybatis.executor.resultset.ResultSetHandler;
 import cn.bugstack.mybatis.executor.statement.PreparedStatementHandler;
-import cn.bugstack.mybatis.executor.statement.SimpleStatementHandler;
 import cn.bugstack.mybatis.executor.statement.StatementHandler;
 import cn.bugstack.mybatis.mapping.BoundSql;
 import cn.bugstack.mybatis.mapping.Environment;
@@ -119,8 +118,8 @@ public class Configuration {
     /**
      * 创建结果集处理器
      */
-    public ResultSetHandler newResultSetHandler(Executor executor, MappedStatement mappedStatement, BoundSql boundSql) {
-        return new DefaultResultSetHandler(executor, mappedStatement, boundSql);
+    public ResultSetHandler newResultSetHandler(Executor executor, MappedStatement mappedStatement, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) {
+        return new DefaultResultSetHandler(executor, mappedStatement, resultHandler, rowBounds, boundSql);
     }
 
     /**
@@ -133,8 +132,8 @@ public class Configuration {
     /**
      * 创建语句处理器
      */
-    public StatementHandler newStatementHandler(Executor executor, MappedStatement mappedStatement, Object parameter, ResultHandler resultHandler, BoundSql boundSql) {
-        return new PreparedStatementHandler(executor, mappedStatement, parameter, resultHandler, boundSql);
+    public StatementHandler newStatementHandler(Executor executor, MappedStatement mappedStatement, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) {
+        return new PreparedStatementHandler(executor, mappedStatement, parameter, rowBounds, resultHandler, boundSql);
     }
 
     // 创建元对象
@@ -168,6 +167,10 @@ public class Configuration {
 
     public LanguageDriver getDefaultScriptingLanguageInstance() {
         return languageRegistry.getDefaultDriver();
+    }
+
+    public ObjectFactory getObjectFactory() {
+        return objectFactory;
     }
 
 }

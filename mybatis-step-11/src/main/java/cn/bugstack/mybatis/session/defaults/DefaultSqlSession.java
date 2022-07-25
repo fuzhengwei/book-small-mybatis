@@ -5,6 +5,7 @@ import cn.bugstack.mybatis.mapping.BoundSql;
 import cn.bugstack.mybatis.mapping.Environment;
 import cn.bugstack.mybatis.mapping.MappedStatement;
 import cn.bugstack.mybatis.session.Configuration;
+import cn.bugstack.mybatis.session.RowBounds;
 import cn.bugstack.mybatis.session.SqlSession;
 import cn.bugstack.mybatis.transaction.Transaction;
 import cn.bugstack.mybatis.transaction.TransactionFactory;
@@ -45,7 +46,7 @@ public class DefaultSqlSession implements SqlSession {
     public <T> T selectOne(String statement, Object parameter) {
         logger.info("执行查询 statement：{} parameter：{}", statement, JSON.toJSONString(parameter));
         MappedStatement ms = configuration.getMappedStatement(statement);
-        List<T> list = executor.query(ms, parameter, Executor.NO_RESULT_HANDLER, ms.getSqlSource().getBoundSql(parameter));
+        List<T> list = executor.query(ms, parameter, RowBounds.DEFAULT, Executor.NO_RESULT_HANDLER, ms.getSqlSource().getBoundSql(parameter));
         return list.get(0);
     }
 

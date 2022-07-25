@@ -64,5 +64,4 @@ public class ApiTest {
         logger.info("测试结果：{}", JSON.toJSONString(user));
     }
 
-
 }
