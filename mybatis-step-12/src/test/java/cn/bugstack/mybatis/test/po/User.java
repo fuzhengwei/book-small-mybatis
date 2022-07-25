@@ -28,6 +28,12 @@ public class User {
         this.userId = userId;
     }
 
+    public User(Long id, String userId, String userName) {
+        this.id = id;
+        this.userId = userId;
+        this.userName = userName;
+    }
+
     public Long getId() {
         return id;
     }

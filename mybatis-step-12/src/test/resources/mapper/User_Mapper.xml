@@ -14,4 +14,25 @@
         where id = #{id} and userId = #{userId}
     </select>
 
+    <select id="queryUserInfoList" resultType="cn.bugstack.mybatis.test.po.User">
+        SELECT id, userId, userName, userHead
+        FROM user
+    </select>
+
+    <update id="updateUserInfo" parameterType="cn.bugstack.mybatis.test.po.User">
+        UPDATE user
+        SET userName = #{userName}
+        WHERE id = #{id}
+    </update>
+
+    <insert id="insertUserInfo" parameterType="cn.bugstack.mybatis.test.po.User">
+       INSERT INTO user
+       (userId, userName, userHead, createTime, updateTime)
+       VALUES (#{userId}, #{userName}, #{userHead}, now(), now())
+    </insert>
+
+    <delete id="deleteUserInfoByUserId" parameterType="java.lang.String">
+        DELETE FROM user WHERE userId = #{userId}
+    </delete>
+
 </mapper>
