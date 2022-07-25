@@ -6,6 +6,7 @@ import cn.bugstack.mybatis.mapping.MappedStatement;
 import cn.bugstack.mybatis.mapping.SqlSource;
 import cn.bugstack.mybatis.scripting.LanguageDriver;
 import cn.bugstack.mybatis.scripting.defaults.DefaultParameterHandler;
+import cn.bugstack.mybatis.scripting.defaults.RawSqlSource;
 import cn.bugstack.mybatis.session.Configuration;
 import org.dom4j.Element;
 
@@ -23,6 +24,15 @@ public class XMLLanguageDriver implements LanguageDriver {
         // 用XML脚本构建器解析
         XMLScriptBuilder builder = new XMLScriptBuilder(configuration, script, parameterType);
         return builder.parseScriptNode();
+    }
+
+    /**
+     * step-12 新增方法，用于处理注解配置 SQL 语句
+     */
+    @Override
+    public SqlSource createSqlSource(Configuration configuration, String script, Class<?> parameterType) {
+        // 暂时不解析动态 SQL
+        return new RawSqlSource(configuration, script, parameterType);
     }
 
     @Override

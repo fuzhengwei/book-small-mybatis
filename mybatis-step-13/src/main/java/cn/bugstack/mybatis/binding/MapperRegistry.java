@@ -1,5 +1,6 @@
 package cn.bugstack.mybatis.binding;
 
+import cn.bugstack.mybatis.builder.annotation.MapperAnnotationBuilder;
 import cn.bugstack.mybatis.session.Configuration;
 import cn.bugstack.mybatis.session.SqlSession;
 import cn.hutool.core.lang.ClassScanner;
@@ -49,6 +50,10 @@ public class MapperRegistry {
             }
             // 注册映射器代理工厂
             knownMappers.put(type, new MapperProxyFactory<>(type));
+
+            // 解析注解类语句配置
+            MapperAnnotationBuilder parser = new MapperAnnotationBuilder(config, type);
+            parser.parse();
         }
     }
 

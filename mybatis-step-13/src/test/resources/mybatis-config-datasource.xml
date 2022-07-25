@@ -17,7 +17,11 @@
     </environments>
 
     <mappers>
+        <!-- XML 配置
         <mapper resource="mapper/User_Mapper.xml"/>
+        -->
+        <!--注解配置-->
+        <mapper class="cn.bugstack.mybatis.test.dao.IUserDao"/>
     </mappers>
 
 </configuration>
