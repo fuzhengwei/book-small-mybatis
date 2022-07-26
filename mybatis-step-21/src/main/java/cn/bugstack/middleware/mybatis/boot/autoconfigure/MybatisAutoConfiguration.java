@@ -2,13 +2,11 @@ package cn.bugstack.middleware.mybatis.boot.autoconfigure;
 
 import cn.bugstack.middleware.mybatis.boot.spring.MapperFactoryBean;
 import cn.bugstack.middleware.mybatis.boot.spring.MapperScannerConfigurer;
-import cn.bugstack.mybatis.io.Resources;
 import cn.bugstack.mybatis.session.SqlSessionFactory;
 import cn.bugstack.mybatis.session.SqlSessionFactoryBuilder;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -21,19 +19,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.core.type.AnnotationMetadata;
-import org.xml.sax.InputSource;
-
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Configuration
 @ConditionalOnClass({SqlSessionFactory.class})
