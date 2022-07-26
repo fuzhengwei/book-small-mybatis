@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 @Configuration
 @ComponentScan(basePackages = {"cn.bugstack.middleware.*"})
-public class ApiTestApplication {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(ApiTestApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }
