@@ -1,17 +1,10 @@
 package cn.bugstack.mybatis.session.defaults;
 
 import cn.bugstack.mybatis.executor.Executor;
-import cn.bugstack.mybatis.mapping.BoundSql;
-import cn.bugstack.mybatis.mapping.Environment;
 import cn.bugstack.mybatis.mapping.MappedStatement;
 import cn.bugstack.mybatis.session.Configuration;
 import cn.bugstack.mybatis.session.SqlSession;
-import cn.bugstack.mybatis.transaction.Transaction;
-import cn.bugstack.mybatis.transaction.TransactionFactory;
 
-import java.lang.reflect.Method;
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
