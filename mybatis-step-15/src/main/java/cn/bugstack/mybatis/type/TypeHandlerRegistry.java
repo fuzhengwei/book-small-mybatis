@@ -1,6 +1,7 @@
 package cn.bugstack.mybatis.type;
 
 import java.lang.reflect.Type;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.EnumMap;
 import java.util.HashMap;
@@ -31,6 +32,10 @@ public final class TypeHandlerRegistry {
 
     private <T> void register(Type javaType, TypeHandler<? extends T> typeHandler) {
         register(javaType, null, typeHandler);
+    }
+
+    public void register(JdbcType jdbcType, TypeHandler<?> handler) {
+        JDBC_TYPE_HANDLER_MAP.put(jdbcType, handler);
     }
 
     private void register(Type javaType, JdbcType jdbcType, TypeHandler<?> handler) {

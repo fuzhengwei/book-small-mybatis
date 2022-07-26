@@ -17,4 +17,15 @@
         WHERE activity_id = #{activityId}
     </select>
 
+    <insert id="insert" parameterType="cn.bugstack.mybatis.test.po.Activity">
+        INSERT INTO activity
+        (activity_id, activity_name, activity_desc, create_time, update_time)
+        VALUES (#{activityId}, #{activityName}, #{activityDesc}, now(), now())
+
+        <selectKey keyProperty="id" order="AFTER" resultType="long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+
+    </insert>
+
 </mapper>

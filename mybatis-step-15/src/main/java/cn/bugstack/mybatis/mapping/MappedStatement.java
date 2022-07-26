@@ -1,8 +1,12 @@
 package cn.bugstack.mybatis.mapping;
 
+import cn.bugstack.mybatis.executor.keygen.Jdbc3KeyGenerator;
+import cn.bugstack.mybatis.executor.keygen.KeyGenerator;
+import cn.bugstack.mybatis.executor.keygen.NoKeyGenerator;
 import cn.bugstack.mybatis.scripting.LanguageDriver;
 import cn.bugstack.mybatis.session.Configuration;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +19,7 @@ import java.util.Map;
  */
 public class MappedStatement {
 
+    private String resource;
     private Configuration configuration;
     private String id;
     private SqlCommandType sqlCommandType;
@@ -22,6 +27,10 @@ public class MappedStatement {
     Class<?> resultType;
     private LanguageDriver lang;
     private List<ResultMap> resultMaps;
+    // step-14 新增
+    private KeyGenerator keyGenerator;
+    private String[] keyProperties;
+    private String[] keyColumns;
 
     MappedStatement() {
         // constructor disabled
@@ -48,13 +57,20 @@ public class MappedStatement {
             mappedStatement.sqlCommandType = sqlCommandType;
             mappedStatement.sqlSource = sqlSource;
             mappedStatement.resultType = resultType;
+            mappedStatement.keyGenerator = configuration.isUseGeneratedKeys() && SqlCommandType.INSERT.equals(sqlCommandType) ? new Jdbc3KeyGenerator() : new NoKeyGenerator();
             mappedStatement.lang = configuration.getDefaultScriptingLanguageInstance();
         }
 
         public MappedStatement build() {
             assert mappedStatement.configuration != null;
             assert mappedStatement.id != null;
+            mappedStatement.resultMaps = Collections.unmodifiableList(mappedStatement.resultMaps);
             return mappedStatement;
+        }
+
+        public Builder resource(String resource) {
+            mappedStatement.resource = resource;
+            return this;
         }
 
         public String id() {
@@ -66,6 +82,24 @@ public class MappedStatement {
             return this;
         }
 
+        public Builder keyGenerator(KeyGenerator keyGenerator) {
+            mappedStatement.keyGenerator = keyGenerator;
+            return this;
+        }
+
+        public Builder keyProperty(String keyProperty) {
+            mappedStatement.keyProperties = delimitedStringToArray(keyProperty);
+            return this;
+        }
+
+    }
+
+    private static String[] delimitedStringToArray(String in) {
+        if (in == null || in.trim().length() == 0) {
+            return null;
+        } else {
+            return in.split(",");
+        }
     }
 
     public Configuration getConfiguration() {
@@ -94,6 +128,22 @@ public class MappedStatement {
 
     public List<ResultMap> getResultMaps() {
         return resultMaps;
+    }
+
+    public String[] getKeyColumns() {
+        return keyColumns;
+    }
+
+    public String[] getKeyProperties() {
+        return keyProperties;
+    }
+
+    public KeyGenerator getKeyGenerator() {
+        return keyGenerator;
+    }
+
+    public String getResource() {
+        return resource;
     }
 
 }

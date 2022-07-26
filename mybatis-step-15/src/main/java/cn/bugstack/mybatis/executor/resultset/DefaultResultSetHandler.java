@@ -1,5 +1,6 @@
 package cn.bugstack.mybatis.executor.resultset;
 
+import ch.qos.logback.core.sift.Discriminator;
 import cn.bugstack.mybatis.executor.Executor;
 import cn.bugstack.mybatis.executor.result.DefaultResultContext;
 import cn.bugstack.mybatis.executor.result.DefaultResultHandler;
@@ -11,6 +12,7 @@ import cn.bugstack.mybatis.reflection.MetaClass;
 import cn.bugstack.mybatis.reflection.MetaObject;
 import cn.bugstack.mybatis.reflection.factory.ObjectFactory;
 import cn.bugstack.mybatis.session.Configuration;
+import cn.bugstack.mybatis.session.ResultContext;
 import cn.bugstack.mybatis.session.ResultHandler;
 import cn.bugstack.mybatis.session.RowBounds;
 import cn.bugstack.mybatis.type.TypeHandler;
@@ -18,9 +20,7 @@ import cn.bugstack.mybatis.type.TypeHandlerRegistry;
 
 import java.lang.reflect.Method;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * @author 小傅哥，微信：fustack
@@ -99,7 +99,8 @@ public class DefaultResultSetHandler implements ResultSetHandler {
 
     private void handleRowValuesForSimpleResultMap(ResultSetWrapper rsw, ResultMap resultMap, ResultHandler resultHandler, RowBounds rowBounds, ResultMapping parentMapping) throws SQLException {
         DefaultResultContext resultContext = new DefaultResultContext();
-        while (resultContext.getResultCount() < rowBounds.getLimit() && rsw.getResultSet().next()) {
+        ResultSet resultSet = rsw.getResultSet();
+        while (resultContext.getResultCount() < rowBounds.getLimit() && resultSet.next()) {
             Object rowValue = getRowValue(rsw, resultMap);
             callResultHandler(resultHandler, resultContext, rowValue);
         }
@@ -138,11 +139,36 @@ public class DefaultResultSetHandler implements ResultSetHandler {
     private Object createResultObject(ResultSetWrapper rsw, ResultMap resultMap, List<Class<?>> constructorArgTypes, List<Object> constructorArgs, String columnPrefix) throws SQLException {
         final Class<?> resultType = resultMap.getType();
         final MetaClass metaType = MetaClass.forClass(resultType);
-        if (resultType.isInterface() || metaType.hasDefaultConstructor()) {
+        if (typeHandlerRegistry.hasTypeHandler(resultType)) {
+            // 基本类型
+            return createPrimitiveResultObject(rsw, resultMap, columnPrefix);
+        } else if (resultType.isInterface() || metaType.hasDefaultConstructor()) {
             // 普通的Bean对象类型
             return objectFactory.create(resultType);
         }
         throw new RuntimeException("Do not know how to create an instance of " + resultType);
+    }
+
+    // 简单类型创建
+    private Object createPrimitiveResultObject(ResultSetWrapper rsw, ResultMap resultMap, String columnPrefix) throws SQLException {
+        final Class<?> resultType = resultMap.getType();
+        final String columnName;
+        if (!resultMap.getResultMappings().isEmpty()) {
+            final List<ResultMapping> resultMappingList = resultMap.getResultMappings();
+            final ResultMapping mapping = resultMappingList.get(0);
+            columnName = prependPrefix(mapping.getColumn(), columnPrefix);
+        } else {
+            columnName = rsw.getColumnNames().get(0);
+        }
+        final TypeHandler<?> typeHandler = rsw.getTypeHandler(resultType, columnName);
+        return typeHandler.getResult(rsw.getResultSet(), columnName);
+    }
+
+    private String prependPrefix(String columnName, String prefix) {
+        if (columnName == null || columnName.length() == 0 || prefix == null || prefix.length() == 0) {
+            return columnName;
+        }
+        return prefix + columnName;
     }
 
     private boolean applyAutomaticMappings(ResultSetWrapper rsw, ResultMap resultMap, MetaObject metaObject, String columnPrefix) throws SQLException {

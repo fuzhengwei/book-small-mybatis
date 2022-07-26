@@ -1,16 +1,16 @@
 package cn.bugstack.mybatis.executor.statement;
 
 import cn.bugstack.mybatis.executor.Executor;
+import cn.bugstack.mybatis.executor.keygen.KeyGenerator;
 import cn.bugstack.mybatis.mapping.BoundSql;
 import cn.bugstack.mybatis.mapping.MappedStatement;
 import cn.bugstack.mybatis.mapping.ParameterMapping;
 import cn.bugstack.mybatis.session.ResultHandler;
 import cn.bugstack.mybatis.session.RowBounds;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.lang.reflect.Method;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,7 +44,11 @@ public class PreparedStatementHandler extends BaseStatementHandler{
     public int update(Statement statement) throws SQLException {
         PreparedStatement ps = (PreparedStatement) statement;
         ps.execute();
-        return ps.getUpdateCount();
+        int rows = ps.getUpdateCount();
+        Object parameterObject = boundSql.getParameterObject();
+        KeyGenerator keyGenerator = mappedStatement.getKeyGenerator();
+        keyGenerator.processAfter(executor, mappedStatement, ps, parameterObject);
+        return rows;
     }
 
     @Override
