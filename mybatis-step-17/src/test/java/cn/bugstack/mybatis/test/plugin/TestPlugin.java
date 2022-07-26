@@ -1,6 +1,5 @@
 package cn.bugstack.mybatis.test.plugin;
 
-
 import cn.bugstack.mybatis.executor.statement.StatementHandler;
 import cn.bugstack.mybatis.mapping.BoundSql;
 import cn.bugstack.mybatis.plugin.Interceptor;
