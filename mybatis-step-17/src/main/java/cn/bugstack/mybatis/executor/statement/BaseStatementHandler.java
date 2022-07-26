@@ -69,10 +69,16 @@ public abstract class BaseStatementHandler implements StatementHandler {
         }
     }
 
+    @Override
+    public BoundSql getBoundSql() {
+        return boundSql;
+    }
+
     protected abstract Statement instantiateStatement(Connection connection) throws SQLException;
 
     protected void generateKeys(Object parameter) {
         KeyGenerator keyGenerator = mappedStatement.getKeyGenerator();
         keyGenerator.processBefore(executor, mappedStatement, null, parameter);
     }
+
 }

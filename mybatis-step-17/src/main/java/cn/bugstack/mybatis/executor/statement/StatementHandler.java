@@ -1,5 +1,6 @@
 package cn.bugstack.mybatis.executor.statement;
 
+import cn.bugstack.mybatis.mapping.BoundSql;
 import cn.bugstack.mybatis.session.ResultHandler;
 
 import java.sql.Connection;
@@ -28,5 +29,7 @@ public interface StatementHandler {
     /** 执行查询 */
     <E> List<E> query(Statement statement, ResultHandler resultHandler) throws SQLException;
 
+    /** 获取绑定SQL */
+    BoundSql getBoundSql();
 
 }
