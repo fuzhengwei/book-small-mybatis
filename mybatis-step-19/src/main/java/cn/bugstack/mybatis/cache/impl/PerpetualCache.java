@@ -17,8 +17,6 @@ import java.util.Map;
  */
 public class PerpetualCache implements Cache {
 
-    private Logger logger = LoggerFactory.getLogger(PerpetualCache.class);
-
     private String id;
 
     // 使用HashMap存放一级缓存数据，session 生命周期较短，正常情况下数据不会一直在缓存存放
@@ -40,11 +38,7 @@ public class PerpetualCache implements Cache {
 
     @Override
     public Object getObject(Object key) {
-        Object obj = cache.get(key);
-        if (null != obj) {
-            logger.info("一级缓存 \r\nkey：{} \r\nval：{}", key, JSON.toJSONString(obj));
-        }
-        return obj;
+        return cache.get(key);
     }
 
     @Override
