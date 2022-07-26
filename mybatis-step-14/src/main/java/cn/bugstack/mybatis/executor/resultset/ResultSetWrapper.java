@@ -80,8 +80,8 @@ public class ResultSetWrapper {
     }
 
     private void loadMappedAndUnmappedColumnNames(ResultMap resultMap, String columnPrefix) throws SQLException {
-        List<String> mappedColumnNames = new ArrayList<String>();
-        List<String> unmappedColumnNames = new ArrayList<String>();
+        List<String> mappedColumnNames = new ArrayList<>();
+        List<String> unmappedColumnNames = new ArrayList<>();
         final String upperColumnPrefix = columnPrefix == null ? null : columnPrefix.toUpperCase(Locale.ENGLISH);
         final Set<String> mappedColumns = prependPrefixes(resultMap.getMappedColumns(), upperColumnPrefix);
         for (String columnName : columnNames) {
