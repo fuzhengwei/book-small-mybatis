@@ -85,6 +85,16 @@ public interface SqlSession {
     void commit();
 
     /**
+     * 关闭Session
+     */
+    void close();
+
+    /**
+     * 清理 Session 缓存
+     */
+    void clearCache();
+
+    /**
      * Retrieves current configuration
      * 得到配置
      *
@@ -101,5 +111,6 @@ public interface SqlSession {
      * @return a mapper bound to this SqlSession
      */
     <T> T getMapper(Class<T> type);
+
 
 }

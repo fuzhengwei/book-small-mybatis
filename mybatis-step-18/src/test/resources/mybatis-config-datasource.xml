@@ -4,12 +4,10 @@
 
 <configuration>
 
-    <plugins>
-        <plugin interceptor="cn.bugstack.mybatis.test.plugin.TestPlugin">
-            <property name="test00" value="100"/>
-            <property name="test01" value="200"/>
-        </plugin>
-    </plugins>
+    <settings>
+        <!--缓存级别：SESSION/STATEMENT-->
+        <setting name="localCacheScope" value="SESSION"/>
+    </settings>
 
     <environments default="development">
         <environment id="development">

@@ -9,6 +9,7 @@ import cn.bugstack.mybatis.mapping.MappedStatement;
 import cn.bugstack.mybatis.mapping.SqlCommandType;
 import cn.bugstack.mybatis.plugin.Interceptor;
 import cn.bugstack.mybatis.session.Configuration;
+import cn.bugstack.mybatis.session.LocalCacheScope;
 import cn.bugstack.mybatis.transaction.TransactionFactory;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -57,6 +58,8 @@ public class XMLConfigBuilder extends BaseBuilder {
         try {
             // 插件 step-16 添加
             pluginElement(root.element("plugins"));
+            // 设置
+            settingsElement(root.element("settings"));
             // 环境
             environmentsElement(root.element("environments"));
             // 解析映射器
@@ -70,10 +73,10 @@ public class XMLConfigBuilder extends BaseBuilder {
     /**
      * Mybatis 允许你在某一点切入映射语句执行的调度
      * <plugins>
-     *     <plugin interceptor="cn.bugstack.mybatis.test.plugin.TestPlugin">
-     *         <property name="test00" value="100"/>
-     *         <property name="test01" value="100"/>
-     *     </plugin>
+     * <plugin interceptor="cn.bugstack.mybatis.test.plugin.TestPlugin">
+     * <property name="test00" value="100"/>
+     * <property name="test01" value="100"/>
+     * </plugin>
      * </plugins>
      */
     private void pluginElement(Element parent) throws Exception {
@@ -92,6 +95,22 @@ public class XMLConfigBuilder extends BaseBuilder {
             interceptorInstance.setProperties(properties);
             configuration.addInterceptor(interceptorInstance);
         }
+    }
+
+    /**
+     * <settings>
+     *     <!--缓存级别：SESSION/STATEMENT-->
+     *     <setting name="localCacheScope" value="SESSION"/>
+     * </settings>
+     */
+    private void settingsElement(Element context) {
+        if (context == null) return;
+        List<Element> elements = context.elements();
+        Properties props = new Properties();
+        for (Element element : elements) {
+            props.setProperty(element.attributeValue("name"), element.attributeValue("value"));
+        }
+        configuration.setLocalCacheScope(LocalCacheScope.valueOf(props.getProperty("localCacheScope")));
     }
 
     /**

@@ -1,27 +1,15 @@
 package cn.bugstack.mybatis.test;
 
-import cn.bugstack.mybatis.builder.xml.XMLConfigBuilder;
-import cn.bugstack.mybatis.executor.Executor;
 import cn.bugstack.mybatis.io.Resources;
-import cn.bugstack.mybatis.mapping.Environment;
 import cn.bugstack.mybatis.session.*;
-import cn.bugstack.mybatis.session.defaults.DefaultSqlSession;
 import cn.bugstack.mybatis.test.dao.IActivityDao;
 import cn.bugstack.mybatis.test.po.Activity;
-import cn.bugstack.mybatis.transaction.Transaction;
-import cn.bugstack.mybatis.transaction.TransactionFactory;
 import com.alibaba.fastjson.JSON;
-import ognl.Ognl;
-import ognl.OgnlContext;
-import ognl.OgnlException;
-import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
 
 /**
  * @author 小傅哥，微信：fustack
@@ -46,8 +34,14 @@ public class ApiTest {
         // 3. 测试验证
         Activity req = new Activity();
         req.setActivityId(100001L);
-        Activity res = dao.queryActivityById(req);
-        logger.info("测试结果：{}", JSON.toJSONString(res));
+
+        logger.info("测试结果：{}", JSON.toJSONString(dao.queryActivityById(req)));
+
+         // sqlSession.commit();
+         // sqlSession.clearCache();
+         sqlSession.close();
+
+        logger.info("测试结果：{}", JSON.toJSONString(dao.queryActivityById(req)));
     }
 
 }
