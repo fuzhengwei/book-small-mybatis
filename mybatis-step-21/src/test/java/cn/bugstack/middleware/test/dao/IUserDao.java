@@ -4,6 +4,6 @@ import cn.bugstack.middleware.test.po.User;
 
 public interface IUserDao {
 
-     User queryUserInfoById(Long uId);
+    User queryUserInfoById(Long uId);
 
 }

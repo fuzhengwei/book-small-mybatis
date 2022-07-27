@@ -8,7 +8,8 @@
         where id = #{id}
     </select>
 
-    <select id="queryUserList" parameterType="cn.bugstack.mybatis.test.po.User" resultType="cn.bugstack.mybatis.test.po.User">
+    <select id="queryUserList" parameterType="cn.bugstack.mybatis.test.po.User"
+            resultType="cn.bugstack.mybatis.test.po.User">
         SELECT id, userId, userName, userHead, createTime, updateTime
         FROM user
         where userId = #{userId}

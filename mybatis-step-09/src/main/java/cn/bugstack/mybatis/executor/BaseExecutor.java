@@ -1,7 +1,5 @@
 package cn.bugstack.mybatis.executor;
 
-import cn.bugstack.mybatis.datasource.pooled.PooledDataSource;
-import cn.bugstack.mybatis.executor.resultset.ResultSetHandler;
 import cn.bugstack.mybatis.mapping.BoundSql;
 import cn.bugstack.mybatis.mapping.MappedStatement;
 import cn.bugstack.mybatis.session.Configuration;
@@ -15,7 +13,6 @@ import java.util.List;
 /**
  * @author 小傅哥，微信：fustack
  * @description 执行器抽象基类
- * @date 2022/04/26
  * @github https://github.com/fuzhengwei
  * @copyright 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */

@@ -3,8 +3,7 @@ package cn.bugstack.mybatis.cache;
 /**
  * @author 小傅哥，微信：fustack
  * @description SPI(Service Provider Interface) for cache providers. 缓存接口
- * @date 2022/7/3
- * @github https://github.com/fuzhengwei/CodeDesignTutorials
+ * @github https://github.com/fuzhengwei
  * @Copyright 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
 public interface Cache {

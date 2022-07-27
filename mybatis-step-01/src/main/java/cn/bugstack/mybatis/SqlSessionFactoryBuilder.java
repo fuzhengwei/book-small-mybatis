@@ -112,7 +112,7 @@ public class SqlSessionFactoryBuilder {
                     xNode.setResultType(resultType);
                     xNode.setSql(sql);
                     xNode.setParameter(parameter);
-                    
+
                     map.put(namespace + "." + id, xNode);
                 }
             } catch (Exception ex) {

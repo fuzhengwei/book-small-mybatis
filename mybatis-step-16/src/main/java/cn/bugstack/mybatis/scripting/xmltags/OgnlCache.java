@@ -12,8 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * OGNL 是 Object-Graph Navigation Language 的缩写，它是一种功能强大的表达式语言（Expression Language，简称为EL）
  * 通过它简单一致的表达式语法，可以存取对象的任意属性，调用对象的方法，遍历整个对象的结构图，实现字段类型转化等功能。
  * 它使用相同的表达式去存取对象的属性。
- * @date 2022/6/28
- * @github https://github.com/fuzhengwei/CodeDesignTutorials
+ * @github https://github.com/fuzhengwei
  * @Copyright 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
 public class OgnlCache {

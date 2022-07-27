@@ -7,7 +7,6 @@ import java.util.Map;
 /**
  * @author 小傅哥，微信：fustack
  * @description JDBC类型枚举
- * @date 2022/04/12
  * @github https://github.com/fuzhengwei
  * @copyright 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
@@ -23,7 +22,7 @@ public enum JdbcType {
     TIMESTAMP(Types.TIMESTAMP);
 
     public final int TYPE_CODE;
-    private static Map<Integer,JdbcType> codeLookup = new HashMap<>();
+    private static Map<Integer, JdbcType> codeLookup = new HashMap<>();
 
     // 就将数字对应的枚举型放入 HashMap
     static {
@@ -36,7 +35,7 @@ public enum JdbcType {
         this.TYPE_CODE = code;
     }
 
-    public static JdbcType forCode(int code)  {
+    public static JdbcType forCode(int code) {
         return codeLookup.get(code);
     }
 

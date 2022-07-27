@@ -8,11 +8,10 @@ import java.sql.Statement;
 /**
  * @author 小傅哥，微信：fustack
  * @description 不用键值生成器
- * @date 2022/6/23
- * @github https://github.com/fuzhengwei/CodeDesignTutorials
+ * @github https://github.com/fuzhengwei
  * @Copyright 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
-public class NoKeyGenerator implements KeyGenerator{
+public class NoKeyGenerator implements KeyGenerator {
 
     @Override
     public void processBefore(Executor executor, MappedStatement ms, Statement stmt, Object parameter) {

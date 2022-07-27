@@ -34,6 +34,7 @@ public interface SqlSession {
     /**
      * Retrieves current configuration
      * 得到配置
+     *
      * @return Configuration
      */
     Configuration getConfiguration();

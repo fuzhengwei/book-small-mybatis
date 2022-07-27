@@ -27,7 +27,6 @@ import java.util.regex.Pattern;
 /**
  * @author 小傅哥，微信：fustack
  * @description XML配置构建器，建造者模式，继承BaseBuilder
- * @date 2022/04/06
  * @github https://github.com/fuzhengwei
  * @copyright 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
@@ -70,10 +69,10 @@ public class XMLConfigBuilder extends BaseBuilder {
     /**
      * Mybatis 允许你在某一点切入映射语句执行的调度
      * <plugins>
-     *     <plugin interceptor="cn.bugstack.mybatis.test.plugin.TestPlugin">
-     *         <property name="test00" value="100"/>
-     *         <property name="test01" value="100"/>
-     *     </plugin>
+     * <plugin interceptor="cn.bugstack.mybatis.test.plugin.TestPlugin">
+     * <property name="test00" value="100"/>
+     * <property name="test01" value="100"/>
+     * </plugin>
      * </plugins>
      */
     private void pluginElement(Element parent) throws Exception {

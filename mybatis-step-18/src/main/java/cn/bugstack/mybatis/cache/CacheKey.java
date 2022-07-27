@@ -9,8 +9,7 @@ import java.util.List;
  * @author 小傅哥，微信：fustack
  * @description 缓存 Key，一般缓存框架的数据结构基本上都是 Key->Value 方式存储
  * MyBatis 对于其 Key 的生成采取规则为：[mappedStatementId + offset + limit + SQL + queryParams + environment]生成一个哈希码
- * @date 2022/7/3
- * @github https://github.com/fuzhengwei/CodeDesignTutorials
+ * @github https://github.com/fuzhengwei
  * @Copyright 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
 public class CacheKey implements Cloneable, Serializable {
@@ -47,7 +46,7 @@ public class CacheKey implements Cloneable, Serializable {
     public void update(Object object) {
         if (object != null && object.getClass().isArray()) {
             int length = Array.getLength(object);
-            for (int i =0; i < length; i ++){
+            for (int i = 0; i < length; i++) {
                 Object element = Array.get(object, i);
                 doUpdate(element);
             }

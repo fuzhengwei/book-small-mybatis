@@ -25,7 +25,6 @@ import java.util.Locale;
 /**
  * @author 小傅哥，微信：fustack
  * @description 默认Map结果处理器
- * @date 2022/04/26
  * @github https://github.com/fuzhengwei
  * @copyright 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
@@ -140,7 +139,7 @@ public class DefaultResultSetHandler implements ResultSetHandler {
         throw new RuntimeException("Do not know how to create an instance of " + resultType);
     }
 
-    private boolean applyAutomaticMappings(ResultSetWrapper rsw, ResultMap resultMap, MetaObject metaObject, String columnPrefix) throws SQLException{
+    private boolean applyAutomaticMappings(ResultSetWrapper rsw, ResultMap resultMap, MetaObject metaObject, String columnPrefix) throws SQLException {
         final List<String> unmappedColumnNames = rsw.getUnmappedColumnNames(resultMap, columnPrefix);
         boolean foundValues = false;
         for (String columnName : unmappedColumnNames) {

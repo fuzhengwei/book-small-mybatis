@@ -8,8 +8,7 @@ import cn.bugstack.mybatis.reflection.wrapper.ObjectWrapperFactory;
 /**
  * @author 小傅哥，微信：fustack
  * @description 一些系统级别的元对象
- * @date 2022/5/2
- * @github https://github.com/fuzhengwei/CodeDesignTutorials
+ * @github https://github.com/fuzhengwei
  * @Copyright 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
 public class SystemMetaObject {

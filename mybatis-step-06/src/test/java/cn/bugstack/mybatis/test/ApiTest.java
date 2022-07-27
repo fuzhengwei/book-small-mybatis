@@ -19,7 +19,6 @@ import java.sql.SQLException;
 /**
  * @author 小傅哥，微信：fustack
  * @description 单元测试
- * @date 2022/3/26
  * @github https://github.com/fuzhengwei
  * @Copyright 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
@@ -51,7 +50,7 @@ public class ApiTest {
         pooledDataSource.setUsername("root");
         pooledDataSource.setPassword("123456");
         // 持续获得链接
-        while (true){
+        while (true) {
             Connection connection = pooledDataSource.getConnection();
             System.out.println(connection);
             Thread.sleep(1000);

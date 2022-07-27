@@ -15,6 +15,7 @@ public interface TransactionFactory {
 
     /**
      * 根据 Connection 创建 Transaction
+     *
      * @param conn Existing database connection
      * @return Transaction
      */
@@ -22,8 +23,9 @@ public interface TransactionFactory {
 
     /**
      * 根据数据源和事务隔离级别创建 Transaction
+     *
      * @param dataSource DataSource to take the connection from
-     * @param level Desired isolation level
+     * @param level      Desired isolation level
      * @param autoCommit Desired autocommit
      * @return Transaction
      */

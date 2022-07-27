@@ -16,13 +16,12 @@ import java.util.List;
 /**
  * @author 小傅哥，微信：fustack
  * @description 预处理语句处理器（PREPARED）
- * @date 2022/4/28
- * @github https://github.com/fuzhengwei/CodeDesignTutorials
+ * @github https://github.com/fuzhengwei
  * @Copyright 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
-public class PreparedStatementHandler extends BaseStatementHandler{
+public class PreparedStatementHandler extends BaseStatementHandler {
 
-    public PreparedStatementHandler(Executor executor, MappedStatement mappedStatement, Object parameterObject, RowBounds rowBounds,  ResultHandler resultHandler, BoundSql boundSql) {
+    public PreparedStatementHandler(Executor executor, MappedStatement mappedStatement, Object parameterObject, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) {
         super(executor, mappedStatement, parameterObject, rowBounds, resultHandler, boundSql);
     }
 
@@ -51,7 +50,7 @@ public class PreparedStatementHandler extends BaseStatementHandler{
     public <E> List<E> query(Statement statement, ResultHandler resultHandler) throws SQLException {
         PreparedStatement ps = (PreparedStatement) statement;
         ps.execute();
-        return resultSetHandler.<E> handleResultSets(ps);
+        return resultSetHandler.<E>handleResultSets(ps);
     }
 
 }

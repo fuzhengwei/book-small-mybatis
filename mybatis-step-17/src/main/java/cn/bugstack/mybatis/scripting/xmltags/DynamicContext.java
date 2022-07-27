@@ -13,8 +13,7 @@ import java.util.Map;
 /**
  * @author 小傅哥，微信：fustack
  * @description 动态上下文
- * @date 2022/5/17
- * @github https://github.com/fuzhengwei/CodeDesignTutorials
+ * @github https://github.com/fuzhengwei
  * @Copyright 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
 public class DynamicContext {
@@ -79,6 +78,7 @@ public class DynamicContext {
         private static final long serialVersionUID = 2977601501966151582L;
 
         private MetaObject parameterMetaObject;
+
         public ContextMap(MetaObject parameterMetaObject) {
             this.parameterMetaObject = parameterMetaObject;
         }
@@ -117,7 +117,7 @@ public class DynamicContext {
 
             Object parameterObject = map.get(PARAMETER_OBJECT_KEY);
             if (parameterObject instanceof Map) {
-                return ((Map)parameterObject).get(name);
+                return ((Map) parameterObject).get(name);
             }
 
             return null;

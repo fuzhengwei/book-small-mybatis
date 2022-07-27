@@ -13,7 +13,8 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
-    <select id="queryActivityById" parameterType="cn.bugstack.mybatis.test.po.Activity" resultMap="activityMap" flushCache="false" useCache="true">
+    <select id="queryActivityById" parameterType="cn.bugstack.mybatis.test.po.Activity" resultMap="activityMap"
+            flushCache="false" useCache="true">
         SELECT activity_id, activity_name, activity_desc, create_time, update_time
         FROM activity
         <trim prefix="where" prefixOverrides="AND | OR" suffixOverrides="and">

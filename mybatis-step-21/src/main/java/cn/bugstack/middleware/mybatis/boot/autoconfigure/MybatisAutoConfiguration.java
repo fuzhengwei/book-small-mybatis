@@ -40,7 +40,6 @@ public class MybatisAutoConfiguration implements InitializingBean {
         Element environment = environments.addElement("environment");
         environment.addAttribute("id", "development");
         environment.addElement("transactionManager").addAttribute("type", "JDBC");
-        ;
 
         Element dataSource = environment.addElement("dataSource");
         dataSource.addAttribute("type", "POOLED");

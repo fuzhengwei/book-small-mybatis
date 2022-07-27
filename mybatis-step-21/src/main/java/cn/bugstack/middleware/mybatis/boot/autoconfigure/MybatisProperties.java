@@ -11,7 +11,7 @@ public class MybatisProperties {
     private String url;                 // jdbc:mysql://127.0.0.1:3306/bugstack?useUnicode=true
     private String username;            // root
     private String password;            // 123456
-    private String mapperLocations;    // classpath*:mapper/*.xml
+    private String mapperLocations;     // classpath*:mapper/*.xml
     private String baseDaoPackage;      // cn.bugstack.middleware.test.infrastructure.dao
 
     public String getDriver() {

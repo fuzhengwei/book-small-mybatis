@@ -12,7 +12,6 @@ import java.util.*;
 /**
  * @author 小傅哥，微信：fustack
  * @description 映射器方法
- * @date 2022/04/06
  * @github https://github.com/fuzhengwei
  * @copyright 公众号：bugstack虫洞栈 | 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
  */
@@ -134,7 +133,7 @@ public class MapperMethod {
             final SortedMap<Integer, String> params = new TreeMap<Integer, String>();
             final Class<?>[] argTypes = method.getParameterTypes();
             for (int i = 0; i < argTypes.length; i++) {
-                String paramName = String.valueOf(params.size());
+                String paramName = String.valueOf(argTypes[i]);
                 params.put(i, paramName);
             }
             return params;
