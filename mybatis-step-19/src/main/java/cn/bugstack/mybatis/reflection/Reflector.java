@@ -175,9 +175,9 @@ public class Reflector {
                     if (!(Modifier.isFinal(modifiers) && Modifier.isStatic(modifiers))) {
                         addSetField(field);
                     }
-                }
-                if (!getMethods.containsKey(field.getName())) {
-                    addGetField(field);
+                    if (!getMethods.containsKey(field.getName())) {
+                        addGetField(field);
+                    }
                 }
             }
         }

@@ -73,9 +73,9 @@ public class Reflector {
                         // Ignored. This is only a final precaution, nothing we can do
                     }
                 }
-            }
-            if (constructor.isAccessible()) {
-                this.defaultConstructor = constructor;
+                if (constructor.isAccessible()) {
+                    this.defaultConstructor = constructor;
+                }
             }
         }
     }
