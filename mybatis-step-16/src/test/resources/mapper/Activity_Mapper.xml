@@ -14,7 +14,7 @@
     <select id="queryActivityById" parameterType="cn.bugstack.mybatis.test.po.Activity" resultMap="activityMap">
         SELECT activity_id, activity_name, activity_desc, create_time, update_time
         FROM activity
-        <trim prefix="where" prefixOverrides="AND | OR" suffixOverrides="and">
+        <trim prefix="WHERE" prefixOverrides="AND | OR" suffixOverrides="and">
             <if test="null != activityId">
                 activity_id = #{activityId}
             </if>
