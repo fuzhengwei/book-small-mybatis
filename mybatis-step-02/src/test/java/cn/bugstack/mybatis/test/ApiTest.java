@@ -37,7 +37,7 @@ public class ApiTest {
     public void test_proxy_class() {
         IUserDao userDao = (IUserDao) Proxy.newProxyInstance(
                 Thread.currentThread().getContextClassLoader(),
-                new Class[]{IUserDao.class}, (proxy, method, args) -> "你被代理了！");
+                new Class[]{IUserDao.class}, (proxy, method, args) -> "你的操作被代理了！");
         String result = userDao.queryUserName("10001");
         System.out.println("测试结果：" + result);
     }

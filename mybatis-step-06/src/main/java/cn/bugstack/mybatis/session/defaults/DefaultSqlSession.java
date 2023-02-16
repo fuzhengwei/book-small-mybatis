@@ -28,7 +28,7 @@ public class DefaultSqlSession implements SqlSession {
 
     @Override
     public <T> T selectOne(String statement) {
-        return (T) ("你被代理了！" + statement);
+        return (T) ("你的操作被代理了！" + statement);
     }
 
     @Override

@@ -22,12 +22,12 @@ public class DefaultSqlSession implements SqlSession {
 
     @Override
     public <T> T selectOne(String statement) {
-        return (T) ("你被代理了！" + statement);
+        return (T) ("你的操作被代理了！" + statement);
     }
 
     @Override
     public <T> T selectOne(String statement, Object parameter) {
-        return (T) ("你被代理了！" + "方法：" + statement + " 入参：" + parameter);
+        return (T) ("你的操作被代理了！" + "方法：" + statement + " 入参：" + parameter);
     }
 
     @Override
