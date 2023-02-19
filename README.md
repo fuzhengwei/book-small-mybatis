@@ -27,8 +27,8 @@
 ### 1. 内容简述
 
 <div align="center">
-    <a href="https://u.jd.com/4LapTH4" target="_blank">
-    <img src="https://bugstack.cn/images/article/product/book/mybatis-t-01.png?raw=true" width="250px">
+    <a href="https://union-click.jd.com/jdc?e=618%7Cpc%7C&p=JF8BANIJK1olXwUFU1xcAUoRA18IGVIVXQUCU24ZVxNJXF9RXh5UHw0cSgYYXBcIWDoXSQVJQwYAXV5dC0sQHDZNRwYlGH1ZDiUfbTl0Xh1OcyVdXlMLDz9YeEcbM244G1oUXQEKU1hfCHsnA2g4STXN67Da8e9B3OGY1uefK1olXQEEU1haDE0UBm4JHGsSXQ8yIgoCXAhHXjhMK2slXjYFVFdJDjlWUXsOaWslXTYBZF5VC0sXAmkOGUcVXAQDU0JdD00QBWgMHVsTVAYKZFxcCU8eM18" target="_blank">
+        <img src="/doc/mybatis-t-01.png?raw=true" width="250px">
     </a>
 </div>
 <br/>
