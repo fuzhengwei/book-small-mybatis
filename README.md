@@ -22,7 +22,7 @@
 - [Github](https://github.com/fuzhengwei/book-small-mybatis) | [Gitcode](https://gitcode.net/fuzhengwei/book-small-mybatis)
 - [0. 内容简述](#) - 添加小傅哥微信【fustack】备注【MyBatis 读书加群】
 - [1. 书籍购买](#1-书籍购买)
-- [2. 勘误记录](#2-勘误记录) - 视频；课程更新到小傅哥的B站：[]()
+- [2. 勘误记录](#2-勘误记录) - 非常感谢，`读者提交阅读中发现的错字和问题`。
 
 ### 1. 内容简述
 
