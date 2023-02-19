@@ -26,6 +26,13 @@
 
 ### 1. 内容简述
 
+<div align="center">
+    <a href="https://u.jd.com/4LapTH4" target="_blank">
+    <img src="https://bugstack.cn/images/article/product/book/mybatis-t-01.png?raw=true" width="250px">
+    </a>
+</div>
+<br/>
+
 `代理`、`反射`、`池化`、`缓存`，MyBatis 给我们的不只是一个 ORM 框架，还包括了它经过深思熟虑所做的分层设计以及对应产生的行之有效的解决方案。MyBatis 的存在不需要让你再刀耕火种般创建 JDBC，也不需要像使用 Hibernate 那么厚重到还需要增加学习 HQL 语句。同时 MyBatis 还支持通过插件机制扩展；监控、加密、路由等功能。因而如此简单且高效的 MyBatis ORM 框架，备受互联网大厂青睐，也是每一个 Java 程序员必须的技术。
 
 除了运用以外，MyBatis 框架也是众多码农，最能最先接触到的一个优质的**源码级别复杂项目**。此源码为了实现如此长周期软件迭代和维护，运用了分治和抽象进行模块设计，使用了**数10种**设计模型进行代码开发。这哪仅仅是一个 ORM 框架，**这简直是学习设计模式的最佳源码级实践资料**。
